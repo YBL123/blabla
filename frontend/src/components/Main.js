@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-
+import { getAllRovers } from '../lib/api'
 
 const Main = () => {
 
@@ -102,84 +102,88 @@ const Main = () => {
     }
 
     return (
+      <h1>hey</h1>
       //...
-              <RoverNew />
-              {!isLoading ?
-                <div className='grid-wrapper'>
-                  {gridState.map((cells, i) => {
-                    return <GridRow key={i} cells={cells} rovers={roversState} handleClick={handleClick} clickedRover={clickedRoverId} />
-                  })}
-                </div>
-                : null}
-              <RoverNewMovement roverId={clickedRoverId.roverId} handleMove={handleRoverMovement} />
-            </div>
-          </div>
+          //     <RoverNew />
+          //     {!isLoading ?
+          //       <div className='grid-wrapper'>
+          //         {gridState.map((cells, i) => {
+          //           return <GridRow key={i} cells={cells} rovers={roversState} handleClick={handleClick} clickedRover={clickedRoverId} />
+          //         })}
+          //       </div>
+          //       : null}
+          //     <RoverNewMovement roverId={clickedRoverId.roverId} handleMove={handleRoverMovement} />
+          //   </div>
+          // </div>
       
         )
+    
 
-        const GridRow = (props) => {
-          const { cells, rovers, handleClick, clickedRover } = props
+//         const GridRow = (props) => {
+//           const { cells, rovers, handleClick, clickedRover } = props
         
-          let mainContent = (
-            <div className="grid-cell-row">
-              {
-                cells.map((cell, i) => {
-                  let roverObj //* will be undefined unless the if statement below is true
-                  rovers.map((rover) => {
-                    if (rover.currentPosition.x === cell.x && rover.currentPosition.y === cell.y) {
-                      roverObj = {
-                        roverId: rover.roverId,
-                        currentPosition: rover.currentPosition
-                      }
-                    }
-                  })
-                  return <GridCell key={i} cell={cell} rover={roverObj} handleClick={handleClick} isClicked={parseInt(clickedRover.x) === cell.x && parseInt(clickedRover.y) === cell.y}
-                  />
-                })
-              }
-            </div>
-          )
+//           let mainContent = (
+//             <div className="grid-cell-row">
+//               {
+//                 cells.map((cell, i) => {
+//                   let roverObj //* will be undefined unless the if statement below is true
+//                   rovers.map((rover) => {
+//                     if (rover.currentPosition.x === cell.x && rover.currentPosition.y === cell.y) {
+//                       roverObj = {
+//                         roverId: rover.roverId,
+//                         currentPosition: rover.currentPosition
+//                       }
+//                     }
+//                   })
+//                   return <GridCell key={i} cell={cell} rover={roverObj} handleClick={handleClick} isClicked={parseInt(clickedRover.x) === cell.x && parseInt(clickedRover.y) === cell.y}
+//                   />
+//                 })
+//               }
+//             </div>
+//           )
         
-          return (
-            <div>
-              {mainContent}
-            </div>
-          )
-        }
-        const GridCell = (props) => {
-          const { cell, rover, handleClick, isClicked } = props
+//           return (
+//             <div>
+//               {mainContent}
+//             </div>
+//           )
+//         }
+//         const GridCell = (props) => {
+//           const { cell, rover, handleClick, isClicked } = props
         
-          //* assigning the correlating image position depending on the rover's movement assignement
-          let roverImgPos
-          if (rover !== undefined) {
-            if (rover.currentPosition.position === 'E') {
-              roverImgPos = roverE
-            } else if (rover.currentPosition.position === 'N') {
-              roverImgPos = roverN
-            } else if (rover.currentPosition.position === 'S') {
-              roverImgPos = roverS
-            } else if (rover.currentPosition.position === 'W') {
-              roverImgPos = roverW
-            }
-          }
+//           //* assigning the correlating image position depending on the rover's movement assignement
+//           let roverImgPos
+//           if (rover !== undefined) {
+//             if (rover.currentPosition.position === 'E') {
+//               roverImgPos = roverE
+//             } else if (rover.currentPosition.position === 'N') {
+//               roverImgPos = roverN
+//             } else if (rover.currentPosition.position === 'S') {
+//               roverImgPos = roverS
+//             } else if (rover.currentPosition.position === 'W') {
+//               roverImgPos = roverW
+//             }
+//           }
         
-          return (
-            <div className={`grid-cell-item ${isClicked ? 'active' : ''}`}>
-              <div className="cell-wrapper">
-                <div className="cell-id">
-                  {`${cell.x} , ${cell.y}`}
-                </div>
-                <div className="box-root">
-                  {rover !== undefined ?
-                    <div className="rover-wrapper">
-                      <img className="rover-png" src={roverImgPos} rover_id={rover.roverId} cell_x={cell.x} cell_y={cell.y} onClick={(e) => handleClick(e)} />
-                    </div> : null}
-                </div>
-              </div>
-            </div>
-          )
+//           return (
+//             <div className={`grid-cell-item ${isClicked ? 'active' : ''}`}>
+//               <div className="cell-wrapper">
+//                 <div className="cell-id">
+//                   {`${cell.x} , ${cell.y}`}
+//                 </div>
+//                 <div className="box-root">
+//                   {rover !== undefined ?
+//                     <div className="rover-wrapper">
+//                       <img className="rover-png" src={roverImgPos} rover_id={rover.roverId} cell_x={cell.x} cell_y={cell.y} onClick={(e) => handleClick(e)} />
+//                     </div> : null}
+//                 </div>
+//               </div>
+//             </div>
+//           )
 
-}
+// }
+
+  }
 
 export default Main
 

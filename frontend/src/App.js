@@ -1,5 +1,7 @@
-import Main from './components/Main.js'
+import React from 'react'
 
+
+import Main from './components/Main.js'
 
 
 function App() {
@@ -10,4 +12,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
