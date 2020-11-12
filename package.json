@@ -1,0 +1,39 @@
+{
+  "name": "mars-rover-yarden-lawson",
+  "version": "1.0.0",
+  "description": "Repo for Mars Rovers by Yarden Lawson",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mocha": "^8.1.3",
+    "mongoose": "^5.10.0",
+    "nodemon": "^2.0.4",
+    "save-dev": "0.0.1-security"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  },
+  "scripts": {
+    "test": "mocha || true",
+    "start": "node index.js",
+    "build": "cd frontend && npm run build",
+    "server": "nodemon",
+    "dev": "concurrently \"npm run server\" \"npm start --prefix frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YBL123/mars-rover-yarden-lawson.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YBL123/mars-rover-yarden-lawson/issues"
+  },
+  "homepage": "https://github.com/YBL123/mars-rover-yarden-lawson#readme"
+}
