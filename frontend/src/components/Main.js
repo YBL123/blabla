@@ -36,6 +36,7 @@ const Main = () => {
     const fetchRovers = async () => {
       try {
         const res = await getAllRovers()
+        console.log(res)
         let rovers = []
         //* mapping through array of rovers, and pushing the roverId, currentPosition and the empty roverMovements into the rovers array
         res.data.map(rover => {
