@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react'
+
+import GridRow from './GridRow'
+
+
 import { getAllRovers } from '../lib/api'
 
 const Main = () => {
@@ -42,8 +46,38 @@ const Main = () => {
     setClickedRoverId(clickedRover)
   }
 
+  const handleRoverMovement = (movementData) => {
+    let roversCopyArray = [...roversState] //* spreading to scoop out the data in roversState and making an immutable copy array
+    //* mapping over roversCopyArray to check if the roverId matches the movementData.roverId -> if false return same rover, if true update the rover in it's new position
+    roversCopyArray = roversCopyArray.map(rover => {
+      if (rover.roverId === movementData.roverId) {
+        //* returning a new rover object for the roversCopyArray containing the rover's new position
+        return {
+          roverId: movementData.roverId,
+          currentPosition: {
+            x: movementData.newPosition.x,
+            y: movementData.newPosition.y,
+            position: movementData.newPosition.position
+          },
+          roverMovements: movementData.movementsArray
+        }
+      } else {
+        //* return existing rover in it's current position
+        return rover
+      }
+    })
+    setRoversState(roversCopyArray) //* updating the rover's state through setting the roversCopyArray to state
+    //! REF: updating the clickedRoverId state in order for the cell highlighted (where the rover has been clicked) in the GridRow compoenent to update
+    setClickedRoverId({
+      roverId: movementData.roverId,
+      x: movementData.newPosition.x,
+      y: movementData.newPosition.y
+    })
+  }
+
   let printRows = (
     <div>
+      {/* <RoverNew /> */}
       <div className='grid-wrapper'>
         {gridState.map((cells, i) => {
           return <GridRow key={i} cells={cells} rovers={roversState} handleClick={handleClick} clickedRover={clickedRoverId} />
@@ -64,73 +98,7 @@ const Main = () => {
 
 export default Main
 
-// Row Component
-const GridRow = (props) => {
-  const { cells, rovers, handleClick, clickedRover } = props
 
-  let printCells = (
-    <div className="grid-cell-row">
-      {
-        cells.map((cell, i) => {
-          let roverObj //* will be undefined unless the if statement below is true
-          rovers.map((rover) => {
-            if (rover.currentPosition.x === cell.x && rover.currentPosition.y === cell.y) {
-              roverObj = {
-                roverId: rover.roverId,
-                currentPosition: rover.currentPosition
-              }
-            }
-          })
-          return <GridCell key={i} cell={cell} rover={roverObj} handleClick={handleClick} isClicked={parseInt(clickedRover.x) === cell.x && parseInt(clickedRover.y) === cell.y}
-          />
-        })
-      }
-    </div>
-  )
-
-  return (
-    <div>
-      {printCells}
-    </div>
-  )
-}
-
-
-// Cell Component
-const GridCell = (props) => {
-  const { cell, rover, handleClick, isClicked } = props
-
-  //* assigning the correlating image position depending on the rover's movement assignement
-  // let roverImgPos
-  if (rover !== undefined) {
-    if (rover.currentPosition.position === 'E') {
-      // roverImgPos = roverE
-    } else if (rover.currentPosition.position === 'N') {
-      // roverImgPos = roverN
-    } else if (rover.currentPosition.position === 'S') {
-      // roverImgPos = roverS
-    } else if (rover.currentPosition.position === 'W') {
-      // roverImgPos = roverW
-    }
-  }
-
-  return (
-    <div className={`grid-cell-item ${isClicked ? 'active' : ''}`}>
-      <div className="cell-wrapper">
-        <div className="cell-id">
-          {`${cell.x} , ${cell.y}`}
-        </div>
-        <div className="box-root">
-          {rover !== undefined ?
-            <div className="rover-wrapper">
-              {/* <img className="rover-png" src={roverImgPos} rover_id={rover.roverId} cell_x={cell.x} cell_y={cell.y} onClick={(e) => handleClick(e)} /> */}
-            </div> : null}
-        </div>
-      </div>
-    </div>
-  )
-
-}
 
 
 
@@ -165,123 +133,8 @@ const GridCell = (props) => {
   //   }
   // }, [gridState]) //* now every time gridState changes the function will run again
 
-  //   //* aquiring the rover id on click
-  //   const handleClick = (e) => {
-  //     const clickedRover = {
-  //       roverId: e.target.getAttribute('rover_id'),
-  //       x: e.target.getAttribute('cell_x'),
-  //       y: e.target.getAttribute('cell_y'),
-  //     }
-  //     setClickedRoverId(clickedRover)
-  //   }
-
-  //   const handleRoverMovement = (movementData) => {
-  //     let roversCopyArray = [...roversState] //* spreading to scoop out the data in roversState and making an immutable copy array
-  //     //* mapping over roversCopyArray to check if the roverId matches the movementData.roverId -> if false return same rover, if true update the rover in it's new position
-  //     roversCopyArray = roversCopyArray.map(rover => {
-  //       if (rover.roverId === movementData.roverId) {
-  //         //* returning a new rover object for the roversCopyArray containing the rover's new position
-  //         return {
-  //           roverId: movementData.roverId,
-  //           currentPosition: {
-  //             x: movementData.newPosition.x,
-  //             y: movementData.newPosition.y,
-  //             position: movementData.newPosition.position
-  //           },
-  //           roverMovements: movementData.movementsArray
-  //         }
-  //       } else {
-  //         //* return existing rover in it's current position
-  //         return rover
-  //       }
-  //     })
-  //     setRoversState(roversCopyArray) //* updating the rover's state through setting the roversCopyArray to state
-  //     //! REF: updating the clickedRoverId state in order for the cell highlighted (where the rover has been clicked) in the GridRow compoenent to update
-  //     setClickedRoverId({ 
-  //       roverId: movementData.roverId,
-  //       x: movementData.newPosition.x,
-  //       y: movementData.newPosition.y
-  //     })
-  //   }
-
-  //   return (
-  //     <h1>hey</h1>
-  //     //...
-  //         //     <RoverNew />
-  //         //     {!isLoading ?
-  //         //       <div className='grid-wrapper'>
-  //         //         {gridState.map((cells, i) => {
-  //         //           return <GridRow key={i} cells={cells} rovers={roversState} handleClick={handleClick} clickedRover={clickedRoverId} />
-  //         //         })}
-  //         //       </div>
-  //         //       : null}
-  //         //     <RoverNewMovement roverId={clickedRoverId.roverId} handleMove={handleRoverMovement} />
-  //         //   </div>
-  //         // </div>
-
-  //       )
 
 
-  //         const GridRow = (props) => {
-  //           const { cells, rovers, handleClick, clickedRover } = props
 
-  //           let mainContent = (
-  //             <div className="grid-cell-row">
-  //               {
-  //                 cells.map((cell, i) => {
-  //                   let roverObj //* will be undefined unless the if statement below is true
-  //                   rovers.map((rover) => {
-  //                     if (rover.currentPosition.x === cell.x && rover.currentPosition.y === cell.y) {
-  //                       roverObj = {
-  //                         roverId: rover.roverId,
-  //                         currentPosition: rover.currentPosition
-  //                       }
-  //                     }
-  //                   })
-  //                   return <GridCell key={i} cell={cell} rover={roverObj} handleClick={handleClick} isClicked={parseInt(clickedRover.x) === cell.x && parseInt(clickedRover.y) === cell.y}
-  //                   />
-  //                 })
-  //               }
-  //             </div>
-  //           )
 
-  //           return (
-  //             <div>
-  //               {mainContent}
-  //             </div>
-  //           )
-  //         }
-  //         const GridCell = (props) => {
-  //           const { cell, rover, handleClick, isClicked } = props
 
-  //           //* assigning the correlating image position depending on the rover's movement assignement
-  //           let roverImgPos
-  //           if (rover !== undefined) {
-  //             if (rover.currentPosition.position === 'E') {
-  //               roverImgPos = roverE
-  //             } else if (rover.currentPosition.position === 'N') {
-  //               roverImgPos = roverN
-  //             } else if (rover.currentPosition.position === 'S') {
-  //               roverImgPos = roverS
-  //             } else if (rover.currentPosition.position === 'W') {
-  //               roverImgPos = roverW
-  //             }
-  //           }
-
-  //           return (
-  //             <div className={`grid-cell-item ${isClicked ? 'active' : ''}`}>
-  //               <div className="cell-wrapper">
-  //                 <div className="cell-id">
-  //                   {`${cell.x} , ${cell.y}`}
-  //                 </div>
-  //                 <div className="box-root">
-  //                   {rover !== undefined ?
-  //                     <div className="rover-wrapper">
-  //                       <img className="rover-png" src={roverImgPos} rover_id={rover.roverId} cell_x={cell.x} cell_y={cell.y} onClick={(e) => handleClick(e)} />
-  //                     </div> : null}
-  //                 </div>
-  //               </div>
-  //             </div>
-  //           )
-
-  // }
