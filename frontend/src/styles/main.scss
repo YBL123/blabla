@@ -1,0 +1,12 @@
+.grid-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-cell-row {
+  display: flex;
+}
+
+.grid-cell-item {
+  padding: 10px;
+}
