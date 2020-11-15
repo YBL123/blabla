@@ -19,8 +19,8 @@ export const newRover = formData => {
 }
 
 //UPDATE/MOVE
-export const moveRover = (roverId, formData) => {
-  return axios.put(`/api/rovers/${roverId}`, formData, withHeaders())
+export const moveRover = formData => {
+  return axios.post(`/api/rovers/movement`, formData, withHeaders())
 }
 
 //GET SINGLE 

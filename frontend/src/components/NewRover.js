@@ -1,54 +1,48 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { newRover } from '../lib/api'
 
 import RoverForm from './RoverForm'
 
 
-class NewRover extends React.Component {
-  state = {
-    formData: {
-      x: '',
-      y: '',
-      position: ''
-    }
+const NewRover = (props) => {
+
+  const [formData, setFormDataState ] = useState({
+    x: '',
+    y: '',
+    position: ''
+  })
+  const {handleNewRover} = props
+
+  const handleChange = event => {
+    // const errors = { ...errors, [event.target.name]: ''} // shouldn't go here
+    setFormDataState({ ...formData, [event.target.name]: event.target.value }) //add errors back in later 
   }
 
-  handleChange = event => {
-    const formData = { ...this.state.formData, [event.target.name]: event.target.value }
-
-    const errors = { ...this.state.errors, [event.target.name]: ''}
-    this.setState({ formData, errors })
-    
-  }
-
-  handleSubmit = async event => {
+  const handleSubmit = async event => {
     event.preventDefault()
     
     try {
-      const res = await newRover(this.state.formData) 
-      console.log('this is rover res', res)
-      console.log('rover data id', res.data._id)
-      this.props.history.push(`/rovers/${res.data._id}`)
+      const res = await newRover(formData) 
+      handleNewRover(res.data)
     } catch (error) {
       console.log(error.response)
     }
   }
 
-  render() {
+
     return (
       <section className="section">
         <div className="container">
           <RoverForm
-            formData={this.state.formData}
+            formData={formData}
             // errors={this.state.errors}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
             buttonText="Delpoy New Rover"
           />
         </div>
       </section>
     )
-  }
 
 }
 

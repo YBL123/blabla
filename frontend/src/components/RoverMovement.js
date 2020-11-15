@@ -1,69 +1,49 @@
-import React from 'react'
-import { getSingleRover, moveRover } from '../lib/api'
+import React, { useState } from 'react'
+import {  moveRover } from '../lib/api'
 
-import RoverForm from './RoverForm'
+import RoverMovementForm from './RoverMovementForm'
 
-class RoverMovement extends React.Component {
-  state = {
-    formData: {
-      x: '',
-      y: '',
-      position: ''
-    }
-  }
+const RoverMovement = (props) =>  {
 
-  async componentDidMount() {
-    // const roverId = this.props
-    const roverId = this.props
-    console.log('testing testing',roverId)
+  const {roverId, handleMove} = props
+  const [formData, setFormDataState] = useState('')
 
-    try {
-      const res = await getSingleRover(roverId)
-      this.setState({ formData: res.data })  
-    } catch (err) {
-      // this.props.history.push('/notfound')
-    }
-  }
 
-  handleChange = event => {
-    const formData = { ...this.state.formData, [event.target.name]: event.target.value }
-
+  const handleChange = event => {
     // const errors = { ...this.state.errors, [event.target.name]: ''}
-    this.setState({ formData }) //* add ,erros in here
+    setFormDataState(event.target.value) //* add ,erros in here
   }
 
-  handleSubmit = async event => {
+  console.log('this is formData', formData)
+
+  const handleSubmit = async event => {
 
     event.preventDefault()
 
-    const roverId = this.props.match.params.id
-
     try {
-      await moveRover(roverId, this.state.formData)
-
-      this.props.history.push(`/rovers/${roverId}`)
+      const res = await moveRover({id: roverId, movement: formData})
+      handleMove(res.data)
     } catch (error) {
       console.log(error)
       // this.setState({ errors: error.response.data.errors })
     }
   }
 
-  render() {
+
     return (
       <section className="section">
         <div className="container">
-          <RoverForm
-            formData={this.state.formData}
+          <RoverMovementForm
+            formData={formData}
             // errors={this.state.errors}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
             buttonText="Move Rover"
           />
         </div>
       </section>
     )
-  }
-
+  
 
 }
 

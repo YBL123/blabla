@@ -11,7 +11,7 @@ const Main = () => {
 
   const [gridState, setGridState] = useState([])
   const [roversState, setRoversState] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [clickedRoverId, setClickedRoverId] = useState({})
 
   useEffect(() => {
@@ -44,7 +44,6 @@ const Main = () => {
     const fetchRovers = async () => {
       try {
         const res = await getAllRovers()
-        console.log('ALL ROVERS',res)
         let rovers = []
         //* mapping through array of rovers, and pushing the roverId, currentPosition and the empty roverMovements into the rovers array
         res.data.map(rover => {
@@ -57,9 +56,8 @@ const Main = () => {
             },
             roverMovements: []
           })
-          return setRoversState(rovers) //* setting the rovers array to state
         })
-
+        setRoversState(rovers) //* setting the rovers array to state
         setIsLoading(false) //! Now that the grid is ready and the fetch of the rovers is completed and are set to state with setRoversState
       } catch (err) {
         console.log(err)
@@ -71,7 +69,6 @@ const Main = () => {
     }
   }, [gridState]) //* now every time gridState changes the function will run again
 
-
   const handleClick = (e) => {
     const clickedRover = {
       roverId: e.target.getAttribute('rover_id'),
@@ -79,6 +76,21 @@ const Main = () => {
       y: e.target.getAttribute('cell_y'),
     }
     setClickedRoverId(clickedRover)
+  }
+
+  const handleNewRover = (newRover) => {
+    let newRoversArray = [...roversState]
+
+    console.log('newRover',newRover)
+
+    newRoversArray.push( {
+      roverId: newRover._id,
+      currentPosition: {
+        x: newRover.x, y: newRover.y, position: newRover.position
+      }
+    })
+      
+    setRoversState(newRoversArray)
   }
 
   const handleRoverMovement = (movementData) => {
@@ -114,7 +126,7 @@ const Main = () => {
     <div className='page-wrapper'>
       <h1 className='title'>Mars Exploration</h1>
       <div className='grid-commands-wrapper'>
-      <NewRover />
+      <NewRover handleNewRover={handleNewRover} />
       <div className='grid-wrapper'>
         {gridState.map((cells, i) => {
           return <GridRow key={i} cells={cells} rovers={roversState} handleClick={handleClick} clickedRover={clickedRoverId} />
@@ -124,7 +136,7 @@ const Main = () => {
       </div>
     </div>
   )
-  
+
   return (
     <div>
       { !isLoading ? printRows : null}
