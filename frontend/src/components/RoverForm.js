@@ -9,7 +9,7 @@ const RoverForm = ({ formData, handleChange, handleSubmit, buttonText }) => (
         <div className="control">
           <input
             className="input"
-            placeholder="X co-ordinate between 0-5"
+            placeholder="X coordinate between 0-5"
             name="x"
             onChange={handleChange}
             value={formData.x}
@@ -22,7 +22,7 @@ const RoverForm = ({ formData, handleChange, handleSubmit, buttonText }) => (
         <div className="control">
           <input
             className="input"
-            placeholder="Y co-ordinate between 0-5"
+            placeholder="Y coordinate between 0-5"
             name="y"
             onChange={handleChange}
             value={formData.y}
@@ -35,7 +35,7 @@ const RoverForm = ({ formData, handleChange, handleSubmit, buttonText }) => (
         <div className="control">
           <input
             className="input"
-            placeholder="N / E / S / W /"
+            placeholder="N,  E,  S,  W "
             name="position"
             onChange={handleChange}
             value={formData.position}
