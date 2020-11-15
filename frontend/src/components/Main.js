@@ -56,7 +56,7 @@ const Main = () => {
             },
             roverMovements: []
           })
-          setRoversState(rovers) //* setting the rovers array to state
+          return setRoversState(rovers) //* setting the rovers array to state
         })
 
         setIsLoading(false) //! Now that the grid is ready and the fetch of the rovers is completed and are set to state with setRoversState

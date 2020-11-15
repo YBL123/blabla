@@ -10,12 +10,12 @@ const withHeaders = () => {
 
 //GET ALL
 export const getAllRovers = () => {
-  return axios.get('/api/rovers')
+    return axios.get('/api/rovers')
 }
 
 //CREATE
 export const newRover = formData => {
-  return axios.post('/api/rovers', formData, withHeaders())
+    return axios.post('/api/rovers', formData, withHeaders())
 }
 
 //UPDATE/MOVE
