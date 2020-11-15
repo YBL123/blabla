@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import GridRow from './GridRow'
 import NewRover from './NewRover'
+import RoverMovement from './RoverMovement'
 
 
 import { getAllRovers } from '../lib/api'
@@ -119,7 +120,7 @@ const Main = () => {
           return <GridRow key={i} cells={cells} rovers={roversState} handleClick={handleClick} clickedRover={clickedRoverId} />
         })}
       </div>
-      {/* <RoverMovement roverId={clickedRoverId.roverId} handleMove={handleRoverMovement} /> */}
+      <RoverMovement roverId={clickedRoverId.roverId} handleMove={handleRoverMovement}  />
       </div>
     </div>
   )

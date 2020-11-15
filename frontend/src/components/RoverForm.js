@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const NewRoverForm = ({ formData, handleChange, handleSubmit, buttonText }) => (
+const RoverForm = ({ formData, handleChange, handleSubmit, buttonText }) => (
   <div className="columns">
     <form onSubmit={handleSubmit} className="column is-half is-offset-one-quarter box">
       <div className="field">
@@ -51,4 +51,4 @@ const NewRoverForm = ({ formData, handleChange, handleSubmit, buttonText }) => (
   </div>
 )
 
-export default NewRoverForm
+export default RoverForm

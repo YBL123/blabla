@@ -23,6 +23,10 @@ export const moveRover = (roverId, formData) => {
   return axios.put(`/api/rovers/${roverId}`, formData, withHeaders())
 }
 
+//GET SINGLE 
+export const getSingleRover = roverId => {
+  return axios.get(`/api/rovers/${roverId}`)
+}
 
 //DELETE
 export const deleteRover = roverId => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { newRover } from '../lib/api'
 
-import NewRoverForm from './NewRoverForm'
+import RoverForm from './RoverForm'
 
 
 class NewRover extends React.Component {
@@ -38,7 +38,7 @@ class NewRover extends React.Component {
     return (
       <section className="section">
         <div className="container">
-          <NewRoverForm
+          <RoverForm
             formData={this.state.formData}
             // errors={this.state.errors}
             handleChange={this.handleChange}
