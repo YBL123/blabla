@@ -124,7 +124,7 @@ const Main = () => {
       </div>
     </div>
   )
-
+  
   return (
     <div>
       { !isLoading ? printRows : null}

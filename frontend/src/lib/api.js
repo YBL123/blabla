@@ -25,7 +25,11 @@ export const moveRover = (roverId, formData) => {
 
 //GET SINGLE 
 export const getSingleRover = roverId => {
-  return axios.get(`/api/rovers/${roverId}`)
+  try {
+    return axios.get(`/api/rovers/${roverId}`)
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 //DELETE

@@ -13,15 +13,15 @@ class RoverMovement extends React.Component {
   }
 
   async componentDidMount() {
-    // console.log('whatttt',this.props.match.params.roverId)/
-    const roverId = this.props.match.params.id
+    // const roverId = this.props
+    const roverId = this.props
     console.log('testing testing',roverId)
 
     try {
       const res = await getSingleRover(roverId)
       this.setState({ formData: res.data })  
     } catch (err) {
-      this.props.history.push('/notfound')
+      // this.props.history.push('/notfound')
     }
   }
 
