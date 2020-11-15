@@ -1,6 +1,23 @@
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+
 .grid-wrapper {
   display: flex;
   flex-direction: column;
+  border: 10px solid black;
+}
+
+.grid-commands-wrapper {
+  display: flex;
+  justify-content: center;
 }
 
 .grid-cell-row {
@@ -11,6 +28,6 @@
   padding: 10px;
 }
 
-.rover-png {
+.roverdog {
   width: 60px;
 }

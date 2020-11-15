@@ -110,7 +110,9 @@ const Main = () => {
   }
 
   let printRows = (
-    <div>
+    <div className='page-wrapper'>
+      <h1 className='title'>Mars Exploration</h1>
+      <div className='grid-commands-wrapper'>
       <NewRover />
       <div className='grid-wrapper'>
         {gridState.map((cells, i) => {
@@ -118,6 +120,7 @@ const Main = () => {
         })}
       </div>
       {/* <RoverMovement roverId={clickedRoverId.roverId} handleMove={handleRoverMovement} /> */}
+      </div>
     </div>
   )
 

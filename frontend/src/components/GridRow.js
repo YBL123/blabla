@@ -4,7 +4,6 @@ import GridCell from './GridCell'
 const GridRow = (props) => {
     const { cells, rovers, handleClick, clickedRover } = props
     
-
     let printCells = (
         <div className="grid-cell-row">
             {

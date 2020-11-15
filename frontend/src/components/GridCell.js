@@ -1,6 +1,6 @@
 import React from 'react'
 
-import robodog from '../assets/robodog.png'
+import roverdog from '../assets/roverdog.png'
 
 
 const GridCell = (props) => {
@@ -30,7 +30,7 @@ const GridCell = (props) => {
                 <div className="box-root">
                     {rover !== undefined ?
                         <div className="rover-wrapper">
-                            <img className="rover-png" src={robodog} rover_id={rover.roverId} cell_x={cell.x} cell_y={cell.y} onClick={(e) => handleClick(e)} alt='robodog'/>
+                            <img className="roverdog" src={roverdog} rover_id={rover.roverId} cell_x={cell.x} cell_y={cell.y} onClick={(e) => handleClick(e)} alt='roverdog'/>
                         </div> : null}
                 </div>
             </div>
