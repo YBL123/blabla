@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import GridRow from './GridRow'
 import NewRover from './NewRover'
 import RoverMovement from './RoverMovement'
+import DeleteRover from './DeleteRover'
 
 
 import { getAllRovers } from '../lib/api'
@@ -133,6 +134,7 @@ const Main = () => {
         })}
       </div>
       <RoverMovement roverId={clickedRoverId.roverId} handleMove={handleRoverMovement}  />
+      <DeleteRover roverId={clickedRoverId.roverId}/>
       </div>
     </div>
   )
