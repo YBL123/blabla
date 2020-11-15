@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import GridRow from './GridRow'
+import NewRover from './NewRover'
 
 
 import { getAllRovers } from '../lib/api'
@@ -35,6 +36,39 @@ const Main = () => {
     //* setting the reversed cells to state
     setGridState(grid.reverse())
   }, [])
+
+
+  //COMMENT OUT?
+  useEffect(() => {
+    const fetchRovers = async () => {
+      try {
+        const res = await getAllRovers()
+        console.log('ALL ROVERS',res)
+        let rovers = []
+        //* mapping through array of rovers, and pushing the roverId, currentPosition and the empty roverMovements into the rovers array
+        res.data.map(rover => {
+          rovers.push({
+            roverId: rover._id,
+            currentPosition: {
+              x: rover.x,
+              y: rover.y,
+              position: rover.position
+            },
+            roverMovements: []
+          })
+          setRoversState(rovers) //* setting the rovers array to state
+        })
+
+        setIsLoading(false) //! Now that the grid is ready and the fetch of the rovers is completed and are set to state with setRoversState
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    //* if gridstate's length is larger than 1 then call fetchRovers function
+    if (gridState.length > 1) {
+      fetchRovers()
+    }
+  }, [gridState]) //* now every time gridState changes the function will run again
 
 
   const handleClick = (e) => {
@@ -77,13 +111,13 @@ const Main = () => {
 
   let printRows = (
     <div>
-      {/* <RoverNew /> */}
+      <NewRover />
       <div className='grid-wrapper'>
         {gridState.map((cells, i) => {
           return <GridRow key={i} cells={cells} rovers={roversState} handleClick={handleClick} clickedRover={clickedRoverId} />
         })}
       </div>
-      {/* <RoverNewMovement roverId={clickedRoverId.roverId} handleMove={handleRoverMovement} /> */}
+      {/* <RoverMovement roverId={clickedRoverId.roverId} handleMove={handleRoverMovement} /> */}
     </div>
   )
 
@@ -102,36 +136,7 @@ export default Main
 
 
 
-// useEffect(() => {
-  //   const fetchRovers = async () => {
-  //     try {
-  //       const res = await getAllRovers()
-  //       console.log(res)
-  //       let rovers = []
-  //       //* mapping through array of rovers, and pushing the roverId, currentPosition and the empty roverMovements into the rovers array
-  //       res.data.map(rover => {
-  //         rovers.push({
-  //           roverId: rover._id,
-  //           currentPosition: {
-  //             x: rover.x,
-  //             y: rover.y,
-  //             position: rover.position
-  //           },
-  //           roverMovements: []
-  //         })
-  //         setRoversState(rovers) //* setting the rovers array to state
-  //       })
 
-  //       setIsLoading(false) //! Now that the grid is ready and the fetch of the rovers is completed and are set to state with setRoversState
-  //     } catch (err) {
-  //       console.log(err)
-  //     }
-  //   }
-  //   //* if gridstate's length is larger than 1 then call fetchRovers function
-  //   if (gridState.length > 1) {
-  //     fetchRovers()
-  //   }
-  // }, [gridState]) //* now every time gridState changes the function will run again
 
 
 
