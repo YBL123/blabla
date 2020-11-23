@@ -18,8 +18,8 @@ const RoverMovementForm = ({ formData, handleChange, handleSubmit, buttonText })
         {/* {errors.name && <small className="help is-danger">{errors.name}</small>} */}
       </div>
 
-      <div className="field">
-        <button type="submit" className="button is-fullwidth is-warning">{buttonText}</button>
+      <div className="move-rover-button-wrap">
+        <button type="submit" className="move-rover-button">{buttonText}</button>
       </div>
     </form>
   </div>

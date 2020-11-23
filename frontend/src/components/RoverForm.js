@@ -44,8 +44,8 @@ const RoverForm = ({ formData, handleChange, handleSubmit, buttonText }) => (
         {/* {errors.color && <small className="help is-danger">{errors.color}</small>} */}
       </div>
 
-      <div className="field">
-        <button type="submit" className="button is-fullwidth is-warning">{buttonText}</button>
+      <div className="deploy-rover-button-wrap">
+        <button type="submit" className="deploy-rover-button">{buttonText}</button>
       </div>
     </form>
   </div>

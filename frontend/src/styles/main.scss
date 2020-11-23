@@ -19,7 +19,7 @@ body {
 .grid-wrapper {
   display: flex;
   flex-direction: column;
-  border: 2px solid darkgray;
+  border: 2px solid lightgray;
   // background-color: powderblue;
 }
 
@@ -34,7 +34,7 @@ body {
 
 .grid-cell-item {
   padding: 10px;
-  border: 2px solid darkgray;
+  border: 2px solid lightgray;
   width: 60px;
   height: 60px;
 }
@@ -66,12 +66,20 @@ section {
 
 .delete-rover-button-wrap {
   display: flex;
-  // justify-content: center;
+  justify-content: center;
+  margin-top: 15px;
 }
 
 .delete-rover-button {
 }
 
+.deploy-rover-button-wrap {
+  margin-top: 15px
+}
+
+.move-rover-button-wrap {
+  margin-top: 15px
+}
 
 /////////////////////////////////////////////  BUTTON  /////////////////////////////////////////
 
