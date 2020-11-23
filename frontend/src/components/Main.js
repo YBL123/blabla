@@ -135,7 +135,7 @@ const Main = () => {
       </div>
       <div className="rovermovment-deleterover-wrapper">
       <RoverMovement roverId={clickedRoverId.roverId} handleMove={handleRoverMovement}  />
-      <div className="delete-rover-button-wrap">
+      <div className="delete-rover-button-wrap ice">
       <DeleteRover roverId={clickedRoverId.roverId}/>
       </div>
       </div>

@@ -38,7 +38,7 @@ const NewRover = (props) => {
             // errors={this.state.errors}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
-            buttonText="Delpoy New Rover"
+            buttonText="Delpoy Rover"
           />
         </div>
       </section>
