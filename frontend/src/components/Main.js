@@ -133,8 +133,12 @@ const Main = () => {
           return <GridRow key={i} cells={cells} rovers={roversState} handleClick={handleClick} clickedRover={clickedRoverId} />
         })}
       </div>
+      <div className="rovermovment-deleterover-wrapper">
       <RoverMovement roverId={clickedRoverId.roverId} handleMove={handleRoverMovement}  />
+      <div className="delete-rover-button-wrap">
       <DeleteRover roverId={clickedRoverId.roverId}/>
+      </div>
+      </div>
       </div>
     </div>
   )

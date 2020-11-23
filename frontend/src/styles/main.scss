@@ -13,12 +13,13 @@ body {
 .title {
   display: flex;
   justify-content: center;
+  color: darkorange
 }
 
 .grid-wrapper {
   display: flex;
   flex-direction: column;
-  border: 4px solid black;
+  border: 2px solid darkgray;
   background-color: powderblue;
 }
 
@@ -29,12 +30,13 @@ body {
 
 .grid-cell-row {
   display: flex;
-  border: 4px solid black;
 }
 
 .grid-cell-item {
   padding: 10px;
-  border: 4px solid black;
+  border: 2px solid darkgray;
+  width: 60px;
+  height: 60px;
 }
 
 .cell-id {
@@ -43,15 +45,31 @@ body {
 }
 
 .roverdog {
-  width: 60px;
+  width: 50px;
+  display: flex;
+  margin: 0 auto;
 }
 
 .active {
   background-color: pink;
 }
 
+section {
+  margin-right: 20px;
+  margin-left: 20px;
+}
 
+.rovermovment-deleterover-wrapper {
+  display: flex;
+  flex-direction: column;
+}
 
+.delete-rover-button-wrap {
+  display: flex;
+  // justify-content: center;
+}
 
-
-
+// .delete-rover-button {
+//   display: flex;
+//   justify-content: center;
+// }

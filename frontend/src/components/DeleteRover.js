@@ -31,7 +31,7 @@ const DeleteRover = ({ roverId }) => {
 
   return (
     <div>
-      <button onClick={onClick}>Remove Rover</button>
+      <button onClick={onClick} className="delete-rover-button">Remove Rover</button>
       {error !== '' ? displayError : null}
     </div>
   )
