@@ -74,11 +74,15 @@ section {
 }
 
 .deploy-rover-button-wrap {
-  margin-top: 15px
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
 }
 
 .move-rover-button-wrap {
-  margin-top: 15px
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
 }
 
 /////////////////////////////////////////////  BUTTON  /////////////////////////////////////////
@@ -194,4 +198,17 @@ background: #fff;
 filter: blur(1px);
 opacity: 0.05;
 background-image: linear-gradient(-270deg, rgba(255,255,255,0.00) 0%, #FFFFFF 20%, #FFFFFF 80%, rgba(255,255,255,0.00) 100%);
+}
+
+
+input {
+  border-radius: 50px;
+  padding: 10px
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  margin-top: 5px
 }
