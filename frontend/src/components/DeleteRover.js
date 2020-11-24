@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
+
+import { Link, useHistory } from 'react-router-dom'
 import { deleteRover } from '../lib/api'
 
-const DeleteRover = ({ roverId }) => {
+const DeleteRover = ({ roverId, UpdateDeletedRoverState }) => {
 
   const [error, setErrorState] = useState('')
 
@@ -17,6 +19,8 @@ const DeleteRover = ({ roverId }) => {
     }
     try {
       const res = await deleteRover(roverId)
+
+      UpdateDeletedRoverState(roverId)
 
       if (res.status !== 204) {
         console.log('could not delete')

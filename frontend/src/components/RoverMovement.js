@@ -14,8 +14,6 @@ const RoverMovement = (props) =>  {
     setFormDataState(event.target.value) //* add ,erros in here
   }
 
-  console.log('this is formData', formData)
-
   const handleSubmit = async event => {
 
     event.preventDefault()

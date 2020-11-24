@@ -6,7 +6,7 @@ import RoverMovement from './RoverMovement'
 import DeleteRover from './DeleteRover'
 
 
-import { getAllRovers } from '../lib/api'
+import { deleteRover, getAllRovers } from '../lib/api'
 
 const Main = () => {
 
@@ -123,6 +123,14 @@ const Main = () => {
     })
   }
 
+
+  const UpdateDeletedRoverState = (deletedRoverId) => {
+    const rovers = roversState.filter(rover => rover.roverId !== deletedRoverId)
+    
+    setRoversState(rovers)
+    setClickedRoverId({})
+  }
+
   let printRows = (
     <div className='page-wrapper'>
       <h1 className='title'>Mars Rovers</h1>
@@ -136,7 +144,7 @@ const Main = () => {
       <div className="rovermovment-deleterover-wrapper">
       <RoverMovement roverId={clickedRoverId.roverId} handleMove={handleRoverMovement}  />
       <div className="delete-rover-button-wrap">
-      <DeleteRover roverId={clickedRoverId.roverId}/>
+      <DeleteRover roverId={clickedRoverId.roverId} UpdateDeletedRoverState={UpdateDeletedRoverState}/>
       </div>
       </div>
       </div>
