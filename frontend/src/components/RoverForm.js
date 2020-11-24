@@ -31,7 +31,7 @@ const RoverForm = ({ formData, handleChange, handleSubmit, buttonText }) => (
         {/* {errors.type && <small className="help is-danger">{errors.type}</small>} */}
       </div>
       <div className="field">
-        <label className="label">POSITION</label>
+        <label className="label">Position</label>
         <div className="control">
           <input
             className="input"

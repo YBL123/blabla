@@ -125,7 +125,7 @@ const Main = () => {
 
   let printRows = (
     <div className='page-wrapper'>
-      <h1 className='title'>Mars Exploration</h1>
+      <h1 className='title'>Mars Rovers</h1>
       <div className='grid-commands-wrapper'>
       <NewRover handleNewRover={handleNewRover} />
       <div className='grid-wrapper'>
