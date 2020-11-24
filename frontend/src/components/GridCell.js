@@ -28,7 +28,7 @@ const GridCell = (props) => {
         <div className={`grid-cell-item ${isClicked ? 'active' : ''}`}>
             <div className="cell-wrapper">
                 <div className="cell-id">
-                    {`${cell.x} , ${cell.y}`}
+                    {`${cell.x}  , ${cell.y}`}
                 </div>
                 <div className="box-root">
                     {rover !== undefined ?
