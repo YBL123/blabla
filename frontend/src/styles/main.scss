@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap');
+
+* {
+  font-family: 'Bungee Inline', cursive;
+  font-size: 14px;
+}
+
 body {
   background-image: url("https://preview.redd.it/9hqo8nyfhpi01.png?width=960&crop=smart&auto=webp&s=bdda547f3503d9134db1699ddda295c3fc650cba");
   background-repeat: no-repeat;
@@ -235,7 +242,8 @@ input {
   padding: 10px;
   box-shadow: 2px 2px 4px #000000;
   // border: darkorange 2px solid;
-  border: none
+  border: none;
+  font-size: 12px;
 }
 
 label {
