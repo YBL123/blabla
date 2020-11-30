@@ -1,17 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap');
 
-// * {
-//   font-family: 'Bungee Inline', cursive;
-//   font-size: 14px;
-// }
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+* {
+  font-family: 'Righteous', cursive;
+  font-size: 15px;
+}
 
 * button {
-  color: #ffe0af;
-  // color: #d44008;
+  color: #dbf3fb;
 }
 
 body {
   background-image: url("https://preview.redd.it/9hqo8nyfhpi01.png?width=960&crop=smart&auto=webp&s=bdda547f3503d9134db1699ddda295c3fc650cba");
+  // background-image: url("https://i.pinimg.com/originals/95/ea/74/95ea747633e0166fe341d3b580c3a16c.gif");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -23,29 +25,13 @@ body {
 }
 
 .title {
-  font-family: 'Bungee Inline', cursive;
+  font-family: "Bungee Inline", cursive;
   display: flex;
   justify-content: center;
-  color: #d44008;
-  // text-shadow: 0px 3px 0px #000000,
-  //               0px 14px 10px rgba(0,0,0,0.15),
-  //               0px 24px 2px rgba(0,0,0,0.1),
-  //               0px 34px 30px rgba(0,0,0,0.1);
-  text-shadow: 0 1px 0 rgb(0, 0, 0), 
-                0 2px 0 #000000,
-                0 3px 0 rgb(0, 0, 0),
-                0 4px 0 #000000,
-                0 5px 0 rgb(0, 0, 0),
-                0 6px 1px rgba(0,0,0,.1),
-                0 0 5px rgba(0,0,0,.1),
-                0 1px 3px rgba(0,0,0,.3),
-                0 3px 5px rgba(0,0,0,.2),
-                0 5px 10px rgba(0,0,0,.25),
-                0 10px 10px rgba(0,0,0,.2),
-                0 20px 20px rgba(0,0,0,.15);
+  color: #d4320c;
+  text-shadow: 0 1px 0 #41150a, 0 2px 0 #41150a, 0 3px 0 #42150a, 0 4px 0 #40150a, 0 5px 0 #40150a, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
   margin-bottom: 10px;
   font-size: 60px;
-  
 }
 
 .grid-wrapper {
@@ -115,19 +101,19 @@ section {
 
 /////////////////////////////////////////////  BUTTON  /////////////////////////////////////////
 
-button {
-  cursor: pointer;
-  width: 150px;
-  position: relative;
-  padding: 0.5rem 1.5rem;
-  border-radius: 3.75rem;
-  line-height: 2.5rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  border: 1px solid #e2e2e2;
-  background-image: linear-gradient(-180deg, #ffffff 0%, #0e0a09 100%);
-  box-shadow: 0 1rem 1.25rem 0 rgba(84, 0, 0, 0.5), 0 -0.25rem 1.5rem #4a3c36 inset, 0 0.75rem 0.5rem rgba(255, 255, 255, 0.4) inset, 0 0.25rem 0.5rem 0 #000000 inset;
-}
+// button {
+//   cursor: pointer;
+//   width: 150px;
+//   position: relative;
+//   padding: 0.5rem 1.5rem;
+//   border-radius: 3.75rem;
+//   line-height: 2.5rem;
+//   font-size: 0.8rem;
+//   font-weight: 600;
+//   border: 1px solid #e2e2e2;
+//   background-image: linear-gradient(-180deg, #ffffff 0%, #0e0a09 100%);
+//   box-shadow: 0 1rem 1.25rem 0 rgba(84, 0, 0, 0.5), 0 -0.25rem 1.5rem #4a3c36 inset, 0 0.75rem 0.5rem rgba(255, 255, 255, 0.4) inset, 0 0.25rem 0.5rem 0 #000000 inset;
+// }
 
 // button {
 //   cursor: pointer;
@@ -157,19 +143,19 @@ button {
 //   box-shadow: 0 1rem 1.25rem 0 rgb(84 0 0 / 50%), 0 -0.25rem 1.5rem #ff5e00 inset, 0 0.75rem 0.5rem rgba(255, 255, 255, 0.4) inset, 0 0.25rem 0.5rem 0 #f39b17 inset;
 // }
 
-// button {
-//     cursor: pointer;
-//     width: 150px;
-//     position: relative;
-//     padding: 0.5rem 1.5rem;
-//     border-radius: 3.75rem;
-//     line-height: 2.5rem;
-//     font-size: 0.8rem;
-//     font-weight: 600;
-//     border: 1px solid #6482c5;
-//     background-image: linear-gradient(-180deg, #d3f9ff 0%, #1f93c0 100%);
-//     box-shadow: 0 1rem 1.25rem 0 rgb(133 23 189 / 50%), 0 -0.25rem 1.5rem #473bb7 inset, 0 0.75rem 0.5rem rgb(255 255 255 / 40%) inset, 0 0.25rem 0.5rem 0 #b836d8 inset;
-// }
+button {
+    cursor: pointer;
+    width: 150px;
+    position: relative;
+    padding: 0.5rem 1.5rem;
+    border-radius: 3.75rem;
+    line-height: 2.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid #6482c5;
+    background-image: linear-gradient(-180deg, #d3f9ff 0%, #1f93c0 100%);
+    box-shadow: 0 1rem 1.25rem 0 rgb(133 23 189 / 50%), 0 -0.25rem 1.5rem #473bb7 inset, 0 0.75rem 0.5rem rgb(255 255 255 / 40%) inset, 0 0.25rem 0.5rem 0 #b836d8 inset;
+}
 
 button span {
 	color: transparent;
