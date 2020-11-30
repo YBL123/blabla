@@ -34,7 +34,7 @@ const RoverForm = ({ formData, handleChange, handleSubmit, buttonText }) => (
         <label className="label">Position</label>
         <div className="control">
           <input
-            className="input"
+            className="input input-position"
             placeholder="N,  E,  S,  W "
             name="position"
             onChange={handleChange}

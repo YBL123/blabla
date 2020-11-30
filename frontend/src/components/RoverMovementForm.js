@@ -8,7 +8,7 @@ const RoverMovementForm = ({ formData, handleChange, handleSubmit, buttonText })
         <label className="label">Movement</label>
         <div className="control">
           <input
-            className="input"
+            className="input input-movement"
             placeholder="L, R, M"
             name="movement"
             onChange={handleChange}
