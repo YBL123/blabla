@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const RoverForm = ({ formData, handleChange, handleSubmit, buttonText }) => (
+const RoverForm = ({ formData, errors, handleChange, handleSubmit, buttonText }) => (
   <div className="columns">
     <form onSubmit={handleSubmit} className="column is-half is-offset-one-quarter box">
       <div className="field">
@@ -15,7 +15,7 @@ const RoverForm = ({ formData, handleChange, handleSubmit, buttonText }) => (
             value={formData.x}
           />
         </div>
-        {/* {errors.name && <small className="help is-danger">{errors.name}</small>} */}
+        {errors.x !== '' ? <small className="error-message">{errors.x}</small> : null }
       </div>
       <div className="field">
         <label className="label">Y</label>
@@ -28,7 +28,7 @@ const RoverForm = ({ formData, handleChange, handleSubmit, buttonText }) => (
             value={formData.y}
           />
         </div>
-        {/* {errors.type && <small className="help is-danger">{errors.type}</small>} */}
+        {errors.y !== '' ? <small className="error-message">{errors.y}</small> : null }
       </div>
       <div className="field">
         <label className="label">Position</label>
@@ -41,7 +41,7 @@ const RoverForm = ({ formData, handleChange, handleSubmit, buttonText }) => (
             value={formData.position}
           />
         </div>
-        {/* {errors.color && <small className="help is-danger">{errors.color}</small>} */}
+        {errors.position !== '' ? <small className="error-message">{errors.position}</small> : null }
       </div>
 
       <div className="deploy-rover-button-wrap">
