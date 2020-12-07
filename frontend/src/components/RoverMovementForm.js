@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RoverMovementForm = ({ formData, handleChange, handleSubmit, buttonText }) => (
+const RoverMovementForm = ({ formData, errors, handleChange, handleSubmit, buttonText }) => (
 
   <div className="columns">
     <form onSubmit={handleSubmit} className="column is-half is-offset-one-quarter box">
@@ -15,7 +15,7 @@ const RoverMovementForm = ({ formData, handleChange, handleSubmit, buttonText })
             value={formData}
           />
         </div>
-        {/* {errors.name && <small className="help is-danger">{errors.name}</small>} */}
+        {errors.movement !== '' ? <small className="error-message">{errors.movement}</small> : null }
       </div>
 
       <div className="move-rover-button-wrap">
