@@ -72,22 +72,24 @@ const NewRover = (props) => {
     }
 
     //position
-    if (typeof(request.position) !== String) {
+    if (typeof request.position !== 'string') {
       isError = true
       errorObj.position = 'Invalid position'
     } else if (request.position.length > 1 ) {
       isError = true
-      errorObj.position = 'Invalid positing length'
+      errorObj.position = 'Invalid position length'
+    // }
     } else if (
-      request.position !== 'n' ||
-      request.position !== 'N' ||
-      request.position !== 'e' ||
-      request.position !== 'E' ||
-      request.position !== 's' ||
-      request.position !== 'S' ||
-      request.position !== 'w' ||
+      request.position !== 'n' &&
+      request.position !== 'N' &&
+      request.position !== 'e' &&
+      request.position !== 'E' &&
+      request.position !== 's' &&
+      request.position !== 'S' &&
+      request.position !== 'w' &&
       request.position !== 'W' 
       ) {
+        isError = true
         errorObj.position = 'Invalid position'
       }
 
