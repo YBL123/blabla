@@ -12,7 +12,7 @@ const RoverMovementForm = ({ formData, errors, handleChange, handleSubmit, butto
             placeholder="L, R, M"
             name="movement"
             onChange={handleChange}
-            value={formData}
+            value={formData.movement}
           />
         </div>
         {errors.movement !== '' ? <small className="error-message">{errors.movement}</small> : null }

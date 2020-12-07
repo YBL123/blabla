@@ -31,7 +31,7 @@ const DeleteRover = ({ roverId, UpdateDeletedRoverState }) => {
 
   }
 
-  const displayError = (<h3>{error}</h3>)
+  const displayError = (<div className="error-container"><h3 className="error-message">{error}</h3></div>)
 
   return (
     <div>

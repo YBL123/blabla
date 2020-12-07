@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { moveRover } from '../lib/api'
 
 import RoverMovementForm from './RoverMovementForm'
@@ -7,17 +7,22 @@ const RoverMovement = (props) => {
 
   const { roverId, handleMove } = props
 
-  const [formData, setFormDataState] = useState('')
-  // const [formData, setFormDataState] = useState({
-  //   movement: ''
-  // })
+  const [formData, setFormDataState] = useState({
+    movement: '',
+    roverId: ''
+  })
 
-  const [errors, setErrorsState] = useState('')
+  const [errors, setErrorsState] = useState({
+    movement: ''
+  })
 
+useEffect(() => {
+  setFormDataState({ ...formData, roverId: roverId })
+}, [roverId])
 
   const handleChange = event => {
     setErrorsState({ ...errors, [event.target.name]: '' })
-    setFormDataState(event.target.value)
+    setFormDataState({ ...formData, [event.target.name]: event.target.value })
   }
 
   const handleSubmit = async event => {
@@ -26,12 +31,12 @@ const RoverMovement = (props) => {
 
     try {
       const request = {
-        movement: formData.movement
+        movement: formData.movement,
+        id: formData.roverId
       }
       if (!errorHandler(request)) {
         const res = await moveRover(request)
-        // const res = await moveRover({ id: roverId, movement: formData })
-        if (res.status === 201) {
+        if (res.status === 200) {
           handleMove(res.data)
         }
       }
@@ -46,31 +51,24 @@ const RoverMovement = (props) => {
     let errorObj = {}
 
 
-    // Error Check
+    //Error Check
 
     //movment
-    if (typeof request.movement !== 'string') {
+    if (!isNaN(request.movement)) {
       isError = true
       errorObj.movement = 'Invalid movment'
+    } 
+    const reqSplit = request.movement.toLowerCase().split('')
+    for( let i = 0; i < reqSplit.length; i++) {
+      if (reqSplit[i] !== 'l' && reqSplit[i] !== 'r' && reqSplit[i] !== 'm') {
+        isError = true
+        errorObj.movement = 'Invalid movment'
+      }
     }
-    // } else if (
-    //   request.movement !== 'l' ||
-    //   request.movement !== 'L' ||
-    //   request.movement !== 'r' ||
-    //   request.movement !== 'R' ||
-    //   request.movement !== 'm' ||
-    //   request.movement !== 'M'
-    // ) {
-    //   isError = true
-    //   errorObj.movment = 'Invalid movement'
-    // }
-
-
       setErrorsState({ ...errors, ...errorObj })
 
     return isError
   }
-
 
   return (
     <section className="section">

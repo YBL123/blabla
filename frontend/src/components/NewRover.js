@@ -72,7 +72,7 @@ const NewRover = (props) => {
     }
 
     //position
-    if (typeof request.position !== 'string') {
+    if (!isNaN(request.position)) {
       isError = true
       errorObj.position = 'Invalid position'
     } else if (request.position.length > 1 ) {
